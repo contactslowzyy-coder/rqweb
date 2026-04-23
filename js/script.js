@@ -96,6 +96,7 @@ const navbarMarkup = `
       <div class="nav-links">
         <a class="${isHomePage ? "active" : ""}" href="${homeAnchor}">Home</a>
         <a class="${isRulesPage ? "active" : ""}" href="${regelsHref}">APV</a>
+        <a href="/faq">FAQ</a>
         <a href="https://discord.gg/realistiq" target="_blank" rel="noreferrer">Doneren</a>
         <a href="https://discord.gg/realistiq" target="_blank" rel="noreferrer">Solliciteren</a>
         <a class="nav-link-discord" href="https://discord.gg/realistiq" target="_blank" rel="noreferrer">
@@ -165,26 +166,6 @@ if (toggle && navLinks) {
   });
 }
 
-// ── Hero Video ──
-(function initVideoPerformance() {
-  const heroVideo = document.querySelector(".hero-video");
-  if (!heroVideo) return;
-
-  const tryPlay = () => {
-    const p = heroVideo.play();
-    if (p) {
-      p.catch(() => {
-        document.addEventListener("click", () => heroVideo.play().catch(() => {}), { once: true, passive: true });
-      });
-    }
-  };
-
-  tryPlay();
-
-  document.addEventListener("visibilitychange", () => {
-    if (!document.hidden) heroVideo.play().catch(() => {});
-  });
-})();
 
 // ── Pause CSS animations when tab is hidden ──
 (function initAnimationPauseOnHidden() {
