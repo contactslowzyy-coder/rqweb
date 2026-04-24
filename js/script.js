@@ -1,8 +1,9 @@
 const pathLower = window.location.pathname.toLowerCase();
-const isSubPage = pathLower.includes("/pages/") || pathLower === "/apv";
 const isRulesPage = pathLower.includes("regels.html") || pathLower === "/apv";
-const isHomePage = !isRulesPage;
-const basePath = isSubPage ? "../" : "";
+const isFaqPage = pathLower === "/faq" || pathLower.includes("faq.html");
+const isSubPage = pathLower.includes("/pages/");
+const isHomePage = !isRulesPage && !isFaqPage;
+const basePath = "";
 const homeAnchor = "/";
 const donateAnchor = "https://discord.gg/realistiq";
 const logoSrc = basePath + "images/rqlogo.png";
@@ -96,7 +97,7 @@ const navbarMarkup = `
       <div class="nav-links">
         <a class="${isHomePage ? "active" : ""}" href="${homeAnchor}">Home</a>
         <a class="${isRulesPage ? "active" : ""}" href="${regelsHref}">APV</a>
-        <a href="/faq">FAQ</a>
+        <a class="${isFaqPage ? \"active\" : \"\"}" href="/faq">FAQ</a>
         <a href="https://discord.gg/realistiq" target="_blank" rel="noreferrer">Doneren</a>
         <a href="https://discord.gg/realistiq" target="_blank" rel="noreferrer">Solliciteren</a>
         <a class="nav-link-discord" href="https://discord.gg/realistiq" target="_blank" rel="noreferrer">
